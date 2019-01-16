@@ -183,12 +183,7 @@ public class CBTService {
 			//this.f
 			String strNum1 = scan.nextLine();
 			int intNum1 = Integer.valueOf(strNum1);
-			if(nums[intNum1-1].equals(vo.getCbt_answer())){
-				System.out.println("정답입니다~~");
-			}else {
-				System.out.println("다시 풀어보세요 ~");
-			}
-			return ;
+			
 		}
 			
 		}

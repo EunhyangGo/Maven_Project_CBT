@@ -55,10 +55,15 @@ public class CBTService {
 		System.out.print(" 문제 입력 >> (0:종료) ");
 		System.out.println("---------------------------");
 
+		
+		System.out.println("문제를 입력하세요 >> ");
+		String cbt_que = scan.nextLine();
+		if (cbt_que.equals("0"))
+			return null;
+		
 		System.out.print(" 보기 1번>>");
 		String cbt_num1 = scan.nextLine();
-		if (cbt_num1.equals("0"))
-			return null;
+		
 
 		System.out.print(" 보기 2번>>");
 		String cbt_num2 = scan.nextLine();
@@ -73,6 +78,7 @@ public class CBTService {
 		String cbt_answer = scan.nextLine();
 
 		CBTVO vo = new CBTVO();
+		vo.setCbt_question(cbt_question);
 		vo.setCbt_num1(cbt_num1);
 		vo.setCbt_num2(cbt_num2);
 		vo.setCbt_num3(cbt_num3);
@@ -230,19 +236,18 @@ public class CBTService {
 			String strM = scan.nextLine();
 			int intM = Integer.valueOf(strM);
 
-			if (intM == 0) 
+			if (intM == 0) {
 				System.out.println("종료합니다");
 			return;
-				
-			if (intM == 1)
+			}
+			if (intM == 1) 
 				this.cbtmenu2();
 			
-			if (intM == 2) {
+			if (intM == 2) 
 				this.viewAllQuestion();
 			
 			}
 			
-		}
 		
 		}	
 	 

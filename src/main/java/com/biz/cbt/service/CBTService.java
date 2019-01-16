@@ -12,6 +12,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.biz.cbt.dao.CBTDao;
 import com.biz.cbt.db.OracleSqlFactory;
+import com.biz.cbt.sql.CBTSQL;
 import com.biz.cbt.vo.CBTVO;
 
 public class CBTService {
@@ -19,6 +20,7 @@ public class CBTService {
 	SqlSessionFactory sessionFactory;
 	Scanner scan;
 	List<CBTVO> cbtList;
+	private String cbt_quenum;
 	
 
 	public CBTService() {
@@ -113,7 +115,38 @@ public class CBTService {
 		System.out.println(ret);
 		return ret;
 	}
+	
+	public void delete() {
+		SqlSession session = this.sessionFactory.openSession();
 
+		CBTDao dao = session.getMapper(CBTDao.class);
+		System.out.println("삭제할 번호 >> ");
+		String strNum = scan.nextLine();
+		
+		if(strNum.equals("")) {
+			System.out.println("삭제가 취소되었습니다");
+			return;
+		}
+		int Id = Integer.valueOf(strNum); 
+		
+		CBTVO vo = dao.findByNum(cbt_quenum);
+		System.out.println("============================");
+		System.out.println("삭제할 데이터 확인");
+		System.out.println("----------------------------");
+		System.out.println("문제 " + vo.getCbt_question());
+		System.out.println("문제1번 " + vo.getCbt_num1());
+		System.out.println("문제2번 " + vo.getCbt_num2());
+		System.out.println("문제3번 " + vo.getCbt_num3());
+		System.out.println("문제4번 " + vo.getCbt_num4());
+		System.out.println(" 정답 " + vo.getCbt_answer());
+		String confirm = scan.nextLine();
+		if(confirm.equals("YES")) {
+		dao.delete(cbt_quenum);
+		System.out.println("삭제되었습니다");
+	}else {
+		System.out.println("취소되었습니다.");
+	}
+	}
 	public void cbtView() {
 
 		SqlSession session = this.sessionFactory.openSession();
@@ -191,22 +224,49 @@ public class CBTService {
 	public void cbtMenu() {
 		while (true) {
 			System.out.println("===============================");
-			System.out.println("1.문제 입력 2.문제 풀이 0.종료");
+			System.out.println("1.문제 입력 2.문제 풀이  0.종료");
 			System.out.println("-------------------------------");
 			System.out.print("선택 >>");
 			String strM = scan.nextLine();
 			int intM = Integer.valueOf(strM);
 
-			if (intM == 0)
-				return;
+			if (intM == 0) 
+				System.out.println("종료합니다");
+			return;
+				
 			if (intM == 1)
-				this.update();
-			if (intM == 2)
+				this.cbtmenu2();
+			
+			if (intM == 2) {
 				this.viewAllQuestion();
-
+			
+			}
+			
 		}
+		
+		}	
+	 
+	
+public void cbtmenu2() {
+	while(true) {
+		System.out.println("==================================");
+		System.out.println("1.문제 등록 2.문제 수정 3. 문제삭제 0.종료");
+		System.out.println("-----------------------------------");
+		System.out.println("선택>> ");
+		String strM = scan.nextLine();
+		int intM = Integer.valueOf(strM);
+		
+		if(intM ==1) this.cbtInfoInput();
+		if(intM ==2) this.update();
+		if(intM ==3) this.delete();
+		if(intM ==0) return;
+		
+			
 	}
+	
 }
+}
+
 /*
  * 문항vo클래스를 만들어서 string 문항; int 정답;
  * 

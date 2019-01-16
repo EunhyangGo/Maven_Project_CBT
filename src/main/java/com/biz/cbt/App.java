@@ -1,4 +1,4 @@
-package com.biz.question;
+package com.biz.cbt;
 
 /**
  * Hello world!

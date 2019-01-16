@@ -58,12 +58,11 @@ public class CBTService {
 		
 		System.out.println("문제를 입력하세요 >> ");
 		String cbt_que = scan.nextLine();
-		if (cbt_que.equals("0"))
+		if (cbt_que.equals("0")) 
 			return null;
 		
 		System.out.print(" 보기 1번>>");
 		String cbt_num1 = scan.nextLine();
-		
 
 		System.out.print(" 보기 2번>>");
 		String cbt_num2 = scan.nextLine();
@@ -78,7 +77,7 @@ public class CBTService {
 		String cbt_answer = scan.nextLine();
 
 		CBTVO vo = new CBTVO();
-		vo.setCbt_question(cbt_question);
+		vo.setCbt_question(cbt_que);
 		vo.setCbt_num1(cbt_num1);
 		vo.setCbt_num2(cbt_num2);
 		vo.setCbt_num3(cbt_num3);

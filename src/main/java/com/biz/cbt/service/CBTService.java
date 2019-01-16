@@ -123,14 +123,13 @@ public class CBTService {
 		cbtList = dao.selectAll();
 
 		for (CBTVO vo : cbtList) {
-			System.out.println(vo);
+		//	System.out.println(vo);
 		}
 
 	}
 
-	
-	
 
+	// 문제를 쪼개서 추가해주는 메서드
 	public void list() {
 
 		SqlSession session = sessionFactory.openSession();
@@ -150,12 +149,14 @@ public class CBTService {
 			cbtList.add(vo);
 		}
 	}
+	
+	// 문제 보여주는 메서드
 	public void viewAllQuestion() {
 		SqlSession session = sessionFactory.openSession();
 		CBTDao dao = session.getMapper(CBTDao.class);
 		cbtList = dao.selectAll();
 
-		System.out.println("문제를 고르시오");
+		System.out.println("문제를 풀어보세요");
 		String strNum = scan.nextLine();
 
 		if (strNum.equals("")) {
@@ -176,21 +177,18 @@ public class CBTService {
 			System.out.println("2번 >> " + nums[1]);
 			System.out.println("3번 >> " + nums[2]);
 			System.out.println("4번 >> " + nums[3]);
-			// System.out.println("정답 >> " + vo.getCbt_answer());
+			
 			
 			System.out.println("정답을 입력하세요 >> ");
 			//this.f
 			String strNum1 = scan.nextLine();
 			int intNum1 = Integer.valueOf(strNum1);
 			
-			//if(intNum1)
-			//if()
-			
 			}
 			
 			
 		}
-	
+	// 메뉴 메서드
 	public void cbtMenu() {
 		while (true) {
 			System.out.println("===============================");

@@ -12,7 +12,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.ibatis.transaction.TransactionFactory;
 import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 
-import com.biz.cbt.dao.AnswerDao;
+
 import com.biz.cbt.dao.CBTDao;
 
 public class OracleSqlFactory {
